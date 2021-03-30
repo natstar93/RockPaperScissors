@@ -6,9 +6,12 @@ namespace Game
 {
     public class Player
     {
-        public string Name { get; set; }
+        public string Name;
+        public Player(string playerName)
+        {
+            Name = playerName;
+        }
 
         public int Score { get; set; }
-
     }
 }

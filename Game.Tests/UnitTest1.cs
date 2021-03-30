@@ -1,14 +1,15 @@
-using System;
 using Xunit;
+using Game;
 
 namespace Game.Tests
 {
-    public class UnitTest1
+    public class GameTests
     {
         [Fact]
-        public void Test1()
+        public void CreatesPlayer()
         {
-            Assert.True(true);
+            var game = new Game("Nat");
+            Assert.Equal("Nat", game.Player1.Name);
         }
     }
 }
