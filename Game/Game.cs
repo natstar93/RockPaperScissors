@@ -1,38 +1,44 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game
 {
-    class Game
+    public class Game
     {
-        public Player Player1;
-        public int TotalRounds = 3;
+        public static IPlayer[] Players;
+        public int TotalRounds;
         public int RoundsCompleted = 0;
-        public string Winner;
+        public IPlayer Winner;
 
-        public Game(string playerName)
+        public Game(string playerName, int rounds)
         {
-            Player1 = new Player(playerName);
+            TotalRounds = rounds;
+            Players = new IPlayer[] {new HumanPlayer(playerName), new ComputerPlayer()};
+        }
 
-            Console.WriteLine($"Hello {Player1.Name} your score is currently {Player1.Score}.");
+        public void PlayGame()
+        {
+
+            // create IO interface and call method to get user input 
+            Console.WriteLine($"Hello {Players[0].Name} your score is currently {Players[0].Score}.");
             Console.WriteLine($"This game has {TotalRounds} rounds.");
 
             while (RoundsCompleted < TotalRounds)
             {
-                var round = new Round();
+                var round = new Round(Game.Players);
+                round.Play();
+
+                IPlayer roundWinner = round.Winner;
 
                 RoundsCompleted += 1;
 
-                if (round.Result == "WIN")
-                {
-                    Player1.Score += 1;
-                } ;
+                roundWinner.Score += 1;
+
+                Console.WriteLine($"Rounds Completed {RoundsCompleted}.");
+                Console.WriteLine($"{Players[0].Name} has a score of {Players[0].Score}.");
+                Console.WriteLine($"{Players[1].Name} has a score of {Players[1].Score}.");
             }
 
-            Winner = Player1.Score == 3 ? Player1.Name : "Computer";
+            Winner = Players[0]; // Fix this
         }
 
     }

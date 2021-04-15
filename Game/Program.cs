@@ -9,9 +9,10 @@ namespace Game
             Console.WriteLine("Welcome! What is your name?");
             string name = Console.ReadLine();
 
-            var game = new Game(name);
+            var game = new Game(name, 3);
+            game.PlayGame();
 
-            Console.WriteLine($"{game.Winner} wins.");
+            Console.WriteLine($"{game.Winner.Name} wins.");
         }
     }
 }

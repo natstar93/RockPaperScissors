@@ -1,22 +1,61 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Game
 {
-    class Round
+    public enum Outcome
     {
-        public string Result;
-        public Round()
+        Win,
+        Lose,
+        Draw
+    }
+
+    public class Round
+    {
+        public IPlayer Winner
         {
-            Console.WriteLine("Type an option: Paper, Scissors or Stone.");
-            string userOption = Console.ReadLine();
-            // generate computer option
-            // check which wins
-            // assign a proper result
-            Result = "WIN";
+            get; set;
         }
+        public bool IsComplete;
+        public IPlayer[] Players;
+
+
+        public Round(IPlayer[] players)
+        {
+            IsComplete = false;
+            Players = players;
+        }
+
+        public void Play()
+        {
+            IsComplete = false;
+
+            while (IsComplete == false)
+            {
+                foreach (var player in Players)
+                {
+                    player.Move();
+                }
+
+
+                Winner = GetWinner(Players);
+
+                if (Winner != null)
+                {
+                    IsComplete = true;
+
+                }
+
+            };
+
+            Console.WriteLine($"Winner {Winner}");
+        }
+
+
+        public IPlayer GetWinner(IPlayer[] players)
+        {
+            if (players[0].CurrentMoveOption == players[1].CurrentMoveOption) return null;
+            return players[0]; // Fix this
+        }
+
     }
 }

@@ -1,15 +1,21 @@
 using Xunit;
-using Game;
 
 namespace Game.Tests
 {
-    public class GameTests
+    public class GetResultTests
     {
         [Fact]
-        public void CreatesPlayer()
+        public void GetResultReturnsADraw()
         {
-            var game = new Game("Nat");
-            Assert.Equal("Nat", game.Player1.Name);
+            IPlayer p1 = new HumanPlayer("Nat");
+            IPlayer p2 = new ComputerPlayer();
+            IPlayer[] players = {p1, p2};
+
+            Round r1 = new Round(players);
+            p1.CurrentMoveOption = MoveOption.Paper;
+            p2.CurrentMoveOption = MoveOption.Paper;
+
+            Assert.Equal(Outcome.Draw, r1.GetResult(new [] {p1, p2}));
         }
     }
 }
