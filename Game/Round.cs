@@ -15,21 +15,20 @@ namespace Game
         {
             get; set;
         }
-        public bool IsComplete;
+        private bool _isComplete;
         public IPlayer[] Players;
 
 
         public Round(IPlayer[] players)
         {
-            IsComplete = false;
+            _isComplete = false;
             Players = players;
         }
 
         public void Play()
         {
-            IsComplete = false;
 
-            while (IsComplete == false)
+            while (_isComplete == false)
             {
                 foreach (var player in Players)
                 {
@@ -41,7 +40,7 @@ namespace Game
 
                 if (Winner != null)
                 {
-                    IsComplete = true;
+                    _isComplete = true;
 
                 }
 
