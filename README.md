@@ -1,6 +1,6 @@
-#### Paper Scissors Stone Game
+## Paper Scissors Stone Game
 
-## TODO
+#### TODO
 
 * Tests for Winner logic
 * Creat and use IO interface
