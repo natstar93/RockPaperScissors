@@ -2,13 +2,6 @@
 
 namespace Game
 {
-    public enum Outcome
-    {
-        Win,
-        Lose,
-        Draw
-    }
-
     public class Round
     {
         public IPlayer Winner
@@ -46,7 +39,7 @@ namespace Game
 
             };
 
-            Console.WriteLine($"Round winner: {Winner.Name}");
+            Console.WriteLine($"\n**Round winner: {Winner.Name}**");
         }
 
 

@@ -12,7 +12,7 @@ namespace Game
             var game = new Game(name, 3);
             game.PlayGame();
 
-            Console.WriteLine($"{game.Winner.Name} wins.");
+            Console.WriteLine($"*** {game.Winner.Name} WINS! ***");
         }
     }
 }

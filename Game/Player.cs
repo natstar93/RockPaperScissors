@@ -57,7 +57,7 @@ namespace Game
 
             while (isMoveValid == false)
             {
-                Console.WriteLine("Type an option: Paper, Scissors or Stone.");
+                Console.WriteLine("\nType an option: Paper, Scissors or Stone.");
 
                 userOption = Console.ReadLine();
                 if (IsValid(userOption))
