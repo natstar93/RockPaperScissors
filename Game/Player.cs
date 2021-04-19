@@ -26,7 +26,6 @@ namespace Game
             get;
             set;
         }
-
         void Move();
     }
 
@@ -70,9 +69,6 @@ namespace Game
             Console.WriteLine($"{Name} chose {CurrentMoveOption}");
         }
 
-
-
-
         private static bool IsValid(string input)
         {
             return Enum.IsDefined(typeof(MoveOption), input);
@@ -87,7 +83,9 @@ namespace Game
         {
             get; set;
         }
-        public int Score { get; set; }
+        public int Score { 
+            get; set; 
+        }
         public MoveOption CurrentMoveOption
         {
             get; set;
@@ -96,7 +94,6 @@ namespace Game
         {
             Name = "Computer";
         }
-
         public void Move()
         {
             Array moveOptions = Enum.GetValues(typeof(MoveOption));
