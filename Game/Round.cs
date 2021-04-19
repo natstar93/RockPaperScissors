@@ -53,7 +53,11 @@ namespace Game
         public IPlayer GetWinner(IPlayer[] players)
         {
             if (players[0].CurrentMoveOption == players[1].CurrentMoveOption) return null;
-            return players[0]; // Fix this
+            if ((players[0].CurrentMoveOption == MoveOption.Scissors) && (players[1].CurrentMoveOption == MoveOption.Paper))
+            {
+                return players[0];
+            }
+            return players[1];
         }
 
     }
