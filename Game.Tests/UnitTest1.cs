@@ -34,6 +34,7 @@ namespace Game.Tests
         [Theory]
         [InlineData(MoveOption.Scissors, MoveOption.Paper)]
         [InlineData(MoveOption.Stone, MoveOption.Scissors)]
+        [InlineData(MoveOption.Paper, MoveOption.Stone)]
         public void TwoPlayersWithDifferentChoicesReturnsWinner(MoveOption p1MoveOption, MoveOption p2MoveOption)
         {
 
@@ -41,6 +42,7 @@ namespace Game.Tests
             p2.CurrentMoveOption = p2MoveOption;
 
             Assert.Equal(p1, r1.GetWinner(new[] { p1, p2 }));
+            Assert.Equal(p1, r1.GetWinner(new[] { p2, p1 }));
         }
     }
 }

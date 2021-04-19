@@ -53,12 +53,11 @@ namespace Game
         public IPlayer GetWinner(IPlayer[] players)
         {
             if (players[0].CurrentMoveOption == players[1].CurrentMoveOption) return null;
-            if (((players[0].CurrentMoveOption == MoveOption.Scissors) && (players[1].CurrentMoveOption == MoveOption.Paper)) ||
-                ((players[0].CurrentMoveOption == MoveOption.Stone) && (players[1].CurrentMoveOption == MoveOption.Scissors)))
-            {
-                return players[0];
-            }
-            return players[1];
+
+            return (((players[0].CurrentMoveOption == MoveOption.Scissors) && (players[1].CurrentMoveOption == MoveOption.Paper)) ||
+                ((players[0].CurrentMoveOption == MoveOption.Stone) && (players[1].CurrentMoveOption == MoveOption.Scissors)) || 
+                ((players[0].CurrentMoveOption == MoveOption.Paper) && (players[1].CurrentMoveOption == MoveOption.Stone)))
+            ? players[0] : players[1];
         }
 
     }
