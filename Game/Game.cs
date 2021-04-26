@@ -17,7 +17,7 @@ namespace Game
             _players = new IPlayer[] {new HumanPlayer(playerName), new ComputerPlayer()};
         }
 
-        public void PlayGame()
+        public IPlayer PlayGame()
         {
 
             // create IO interface and call method to get user input 
@@ -31,8 +31,6 @@ namespace Game
 
                 IPlayer roundWinner = round.Winner;
 
-                // roundWinner = round.Play();  ?
-
                 RoundsCompleted += 1;
 
                 roundWinner.Score += 1;
@@ -42,7 +40,7 @@ namespace Game
                 Console.WriteLine($"{_players[1].Name} has a score of {_players[1].Score}.\n");
             }
 
-            Winner = _players.OrderByDescending(player => player.Score).FirstOrDefault(); // just return this
+            return _players.OrderByDescending(player => player.Score).FirstOrDefault();
         }
 
     }
