@@ -8,35 +8,25 @@ namespace Game
         {
             get; set;
         }
-        private bool _isComplete;
         public IPlayer[] Players;
 
 
         public Round(IPlayer[] players)
         {
-            _isComplete = false;
             Players = players;
         }
 
         public void Play()
         {
 
-            while (_isComplete == false)
+            while (Winner == null)
             {
                 foreach (var player in Players)
                 {
                     player.Move();
                 }
 
-
                 Winner = GetWinner(Players);
-
-                if (Winner != null)
-                {
-                    _isComplete = true;
-
-                }
-
             };
 
             Console.WriteLine($"\n**Round winner: {Winner.Name}**");
